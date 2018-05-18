@@ -1,0 +1,97 @@
+<?php if(isset($_SESSION['pseudo'])):?>
+    <div class="modal fade" id="avis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title text-center" id="myModalLabel">
+                    Votre avis
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <li class="list-group-item">
+                            <h4>Le confort:</h4> 
+                            <div id="confort" >
+                            <?= $stars[$avis_confort]?>
+                            </div> 
+                        </li>
+                        <li class="list-group-item">
+                            <h4>L'accessibilité:</h4> 
+                            <div id="accessibilite" >
+                            <?= $stars[$avis_accessibilite]?>
+                            </div> 
+                        </li>
+                        <li class="list-group-item">
+                            <h4>Les services:</h4> 
+                            <div id="service" >
+                            <?= $stars[$avis_services]?>
+                            </div> 
+                        </li>
+                        <li class="list-group-item">
+                            <h4>La sécurité:</h4> 
+                            <div id="securite" >
+                            <?= $stars[$avis_securite]?>
+                            </div> 
+                        </li>
+                        <li class="list-group-item">
+                            <h4>La situation:</h4> 
+                            <div id="situation" >
+                            <?= $stars[$avis_situation]?>
+                            </div> 
+                        </li>
+                        <li class="list-group-item">
+                            <h4>L'accueil:</h4> 
+                            <div id="accueil" >
+                            <?= $stars[$avis_accueil]?>
+                            </div> 
+                        </li>
+                        <li class="list-group-item">
+                            <h4>Le prix:</h4> 
+                            <div id="prix" >
+                            <?= $stars[$avis_prix]?>
+                            </div> 
+                        </li>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <form action="index.php?page=avis&id=<?= $_GET['id']?>" method="post">   
+                        <input type="hidden" name="confort" value="<?= $avis_confort?>">     
+                        <input type="hidden" name="accessibilite" value="<?= $avis_accessibilite?>">
+                        <input type="hidden" name="services" value="<?= $avis_services?>">
+                        <input type="hidden" name="securite" value="<?= $avis_securite?>">
+                        <input type="hidden" name="situation" value="<?=    $avis_situation?>">
+                        <input type="hidden" name="pseudo" value="<?=    $_SESSION['pseudo']?>">
+                        <input type="hidden" name="accueil" value="<?=    $avis_accueil?>">
+                        <input type="hidden" name="prix" value="<?=    $avis_prix?>">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php else:?>
+    <div class="modal fade" id="avis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title text-center" id="myModalLabel">
+                    Votre avis
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <p class="text-warning well">Vous ne pouvez pas donner votre avis si vous n'êtes pas connecté. Inscrivez-vous si ça n'est pas déjà fait.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif;?>

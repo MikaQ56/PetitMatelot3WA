@@ -1,0 +1,91 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title text-center">Vos avis <span class="badge"><?= $reponse['count_avis'];?></span></h2>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <th>Critères</th>
+            <th class="text-center">Note moyenne</th>
+            <th class="text-center">Classement</th>
+        </tr>
+        <tr>
+            <td>Confort</td>
+            <td class="text-center">
+            <?= $stars[$avis_confort]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_confort?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Accessibilité</td>
+            <td class="text-center">
+            <?= $stars[$avis_accessibilite]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_accessibilite?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Services</td>
+            <td class="text-center">
+            <?= $stars[$avis_services]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_services?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Securité</td>
+            <td class="text-center">
+            <?= $stars[$avis_securite]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_securite?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Situation</td>
+            <td class="text-center">
+            <?= $stars[$avis_situation]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_situation?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Accueil</td>
+            <td class="text-center">
+            <?= $stars[$avis_accueil]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_accueil?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Prix</td>
+            <td class="text-center">
+            <?= $stars[$avis_prix]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_prix?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Global</td>
+            <td class="text-center">
+                <?= $stars[$avis_global]?>
+            </td>
+            <td class="text-center font-rank">
+                <span class="rank"><?= $rank_global?></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="text-center">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#avis">
+            Votre avis
+            </button>
+            </td>
+        </tr>
+    </table>
+</div> 

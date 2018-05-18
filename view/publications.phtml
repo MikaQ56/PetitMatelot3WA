@@ -1,0 +1,56 @@
+
+<div class="modal fade publications" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title persoTitle">Des petits matelots réagissent à vos publications...</h3>
+            </div>
+            <div class="modal-body">
+            <?php foreach($likes as $key => $value):?>
+                <div class="list-group">
+                    <a href="<?= $value['ancre']?>lg" class="list-group-item visible-lg">
+                        <h4 class="list-group-item-heading persoTitle">Port <?= $value['harbour']?></h4>
+                        <p class="list-group-item-text"><?= ucfirst($value['pseudo'])?> aime votre publication sur ce port. Cliquez pour retrouver le détail de votre post...</p>
+                        <p class="text-right date"><?= $value['dateForm']?></p>
+                    </a>
+                    <a href="<?= $value['ancre']?>xs" class="list-group-item visible-xs">
+                        <h4 class="list-group-item-heading persoTitle">Port <?= $value['harbour']?></h4>
+                        <p class="list-group-item-text"><?= ucfirst($value['pseudo'])?> aime votre publication sur ce port. Cliquez pour retrouver le détail de votre post...</p>
+                        <p class="text-right date"><?= $value['dateForm']?></p>
+                    </a>
+                    <a href="<?= $value['ancre']?>md" class="list-group-item visible-md">
+                        <h4 class="list-group-item-heading persoTitle">Port <?= $value['harbour']?></h4>
+                        <p class="list-group-item-text"><?= ucfirst($value['pseudo'])?> aime votre publication sur ce port.Cliquez pour retrouver le détail de votre post...</p>
+                        <p class="text-right date"><?= $value['dateForm']?></p>
+                    </a>
+                </div>
+            <?php endforeach;?>
+            <?php foreach($comments as $key => $value):?>
+                <div class="list-group">
+                    <a href="<?= $value['ancre']?>lg" class="list-group-item visible-lg">
+                        <h4 class="list-group-item-heading persoTitle">Port <?= $value['harbour']?></h4>
+                        <p class="list-group-item-text"><?= ucfirst($value['pseudo'])?> a commenté votre publication sur ce port. Cliquez pour retrouver le détail de son commentaire...</p>
+                        <p class="text-right date"><?= $value['dateForm']?></p>
+                    </a>
+                    <a href="<?= $value['ancre']?>xs" class="list-group-item visible-xs">
+                        <h4 class="list-group-item-heading persoTitle">Port <?= $value['harbour']?></h4>
+                        <p class="list-group-item-text"><?= ucfirst($value['pseudo'])?> a commenté votre publication sur ce port. Cliquez pour retrouver le détail de son commentaire... </p>
+                        <p class="text-right date"><?= $value['dateForm']?></p>
+                    </a>
+                    <a href="<?= $value['ancre']?>md" class="list-group-item visible-md">
+                        <h4 class="list-group-item-heading persoTitle">Port <?= $value['harbour']?></h4>
+                        <p class="list-group-item-text"><?= ucfirst($value['pseudo'])?> a commenté votre publication sur ce port. Cliquez pour retrouver le détail de son commentaire...</p>
+                        <p class="text-right date"><?= $value['dateForm']?></p>
+                    </a>
+                </div>
+            <?php endforeach;?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

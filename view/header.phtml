@@ -1,0 +1,156 @@
+<?php
+if(isset($_GET['pseudo']))
+{
+    switch($_GET['pseudo'])
+    {
+        case "false" :
+            $pseudo = false;
+            break;
+        default :
+            $pseudo = false;
+            break;
+    }
+}
+else
+{
+    $pseudo = true;
+}
+
+if(isset($_GET['password']))
+{
+    switch($_GET['password'])
+    {
+        case "true" :
+            $password = true;
+            break;
+        default :
+            $password = false;
+            break;
+    }
+}
+else
+{
+    $password = true;
+}
+
+
+$likes = likesForMe ($db, $_SESSION['pseudo']);
+$comments = commentsForMe ($db, $_SESSION['pseudo']);
+?>
+<!DOCTYPE html>
+<html>   
+    <head>
+        <meta charset="utf-8"\>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"\>
+        <meta name="viewport" content="width=device-width, initial-scale=1"\>
+        <meta name="google-site-verification" content="GYyWopMYCAkSLoIKdi160lIw9E81-hEAs2XfuiarpK4" />
+        <meta property="og:title" content="<?= $ogTitle?>"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="<?= $ogUrl?> "/>
+        <meta property="og:image" content="<?= $ogImage?>"/>
+        <meta property="og:description" content="Ohé Matelots ! Plus qu'un guide des ports de plaisance, Le Petit Matelot recense vos avis, bons plans, conseils sur les ports dans lesquels vous faîtes escale. Bonne nav' à toutes et tous et à bientôt!"/>
+        <title><?= $title?></title>
+        <meta name="description" content="<?= $content?>" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abel|Amatic+SC|Indie+Flower|Montserrat+Subrayada|Oxygen|Poiret+One" rel="stylesheet">
+        <script src="https://use.fontawesome.com/400da9ed80.js"></script>
+        <link rel="icon" href="/images/logo/logo.ico" />
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                    <?php if(!isset($_SESSION['pseudo'])):?>
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                    <?php else:?>
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    <?php endif;?>
+                    </button>
+                    <?php if(isset($_SESSION['pseudo'])):?>
+                        <a class="navbar-brand" href="index.php">
+                            <img class="logo" alt="logo" src="images/logo/logo.png">   
+                        </a>
+                        <a class="navbar-brand hidden-xs" href="index.php">
+                            Le Petit Matelot - <?= ucfirst($_SESSION['pseudo'])?>
+                        </a>
+                        <a class="navbar-brand visible-xs" href="index.php">
+                            Le Petit Matelot
+                        </a>
+                        <?php if(!empty($likes) OR (!empty($comments))):?>
+                            <p class="navbar-text navbar-right" data-toggle="modal" data-target=".publications">
+                                <a href="#" id="notifications"  data-toggle="popover" title="Notifications" data-content="<?= count($likes)+count($comments)?> notifications sur vos publications. Cliquez pour en savoir plus." data-placement="bottom" data-trigger="hover">
+                                <?= count($likes)+count($comments)?>
+                                </a>    
+                            </p>
+                        <?php endif;?>
+                    <?php else:?>
+                        <a class="navbar-brand" href="index.php">
+                            <img class="logo" alt="" src="images/logo/logo.png">
+                        </a>
+                        <a class="navbar-brand" href="index.php">
+                            Le Petit Matelot
+                        </a>
+                    <?php endif;?>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
+                <?php if (isset($_SESSION['pseudo'])):?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="index.php?page=deconnexion" data-toggle="tooltip" data-placement="right" title="Se deconnecter">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Déconnexion
+                            </a>
+                        </li>
+                    </ul>
+                <?php else:?>
+                    <form class="navbar-form navbar-left" method="post" action="index.php?page=connexion">
+                    <?php if($pseudo == false):?>
+                        <div class="form-group has-error">
+                            <input type="text" class="form-control input-sm" id="pseudo" name="pseudo" placeholder="Pseudo erroné">
+                        </div>
+                    <?php else:?>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-sm" id="pseudo" name="pseudo" placeholder="Pseudo">
+                        </div>
+                    <?php endif;?>
+                    <?php if($password == false):?>
+                    <div class="form-group has-error">
+                        <div class="input-group">
+                            <input type="password" class="form-control input-sm" id="password" name="password" placeholder="Mot de passe erroné">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit">       
+                                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <?php else:?>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="password" class="form-control input-sm" id="password" name="password" placeholder="Mot de passe">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="submit">       
+                                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <?php endif;?>
+                    <input type="hidden" name="page" value="<?= $page?>">
+                    <input type="hidden" name="id" value="<?=$_GET['id']?>">   
+                    </form>
+                <?php endif;?>
+                </div>    
+            </div>
+        </nav>

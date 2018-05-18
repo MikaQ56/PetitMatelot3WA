@@ -1,0 +1,41 @@
+
+<article id="formPost" class="col-sm-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+            Laisser un message
+            </h3>
+        </div>
+        <div class="panel-body">
+            <p class="help-block">Vous souhaitez donner un avis sur le port. Ou bien partager des astuces, des conseils. Ou encore, proposer une activité...</p>
+            <form method="post" action="index.php?page=post&id=<?= $_GET['id']?>" enctype="multipart/form-data">
+                <?php if($_GET['errorPseudo']):?>
+                    <div class="form-group has-error">
+                        <textarea class="form-control" rows="3" id="post" name="post"><?= $_GET['post']?></textarea>
+                        <p class="help-block">Vous n'êtes pas connecté. Vous ne pouvez pas laisser de commentaires. Inscrivez vous si vous n'avez pas encore de pseudo.</p>
+                    </div>
+                <?php else:?>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" id="post" name="post"></textarea>
+                    </div>
+                <?php endif;?>
+                <?php if($_GET['errorFile'] != false) :?>
+                    <div class="form-group has-error">
+                        <label for="inputFile">Joindre une image</label>
+                        <input type="file" id="inputFile" name="file">
+                        <p class="help-block"><?= $_GET['errorFile']?></p>
+                    </div>
+                <?php else:?>
+                    <div class="form-group">
+                        <label for="inputFile">Joindre une image</label>
+                        <input type="file" id="inputFile" name="file">
+                    </div>
+                <?php endif;?>
+                    <div class="text-right">
+                        <input type="hidden" name="page" value="port">
+                        <button type="submit" class="btn btn-primary">Poster</button>
+                    </div>
+            </form>
+        </div>
+    </div>  
+</article>

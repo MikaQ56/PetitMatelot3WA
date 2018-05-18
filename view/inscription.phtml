@@ -1,0 +1,79 @@
+            
+<div class="container-fluid">
+    <div class="page-header">
+        <h1>Inscription<small></small></h1>
+    </div>
+    <form action="index.php?page=registration" method="post" class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+            <label for="firstname">Prénom :</label>
+            <input id="firstname" type="text" class="form-control" name="firstname" value="<?= $_POST['firstname']?>">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Nom :</label>
+            <input id="lastname" type="text" class="form-control" name="lastname" value="<?= $_POST['lastname']?>">
+        </div>
+        <?php if($pseudo == false):?>
+        <div class="form-group has-warning">
+            <label for="pseudo">Pseudo :</label>
+            <input id="pseudo" name="pseudo" type="text" class="form-control">
+            <p class="help-block">Choisissez un autre pseudo, celui ci existe déjà...</p>
+        </div>
+        <?php else:?>
+        <div class="form-group">
+            <label for="pseudo">Pseudo :</label>
+            <input id="pseudo" name="pseudo" type="text" class="form-control" value="<?= $_POST['pseudo']?>">
+        </div>
+        <?php endif;?>
+        <div class="form-group">
+            <label for="boat">Votre bateau, le type :</label>
+            <input id="boat" name="boat" type="text" class="form-control" value="<?= $_POST['boat']?>">
+        </div>
+        <div class="form-group">
+            <label for="boat">Votre bateau, son nom :</label>
+            <input id="boatName" name="boatName" type="text" class="form-control" value="<?= $_POST['boatName']?>">
+        </div>
+        <div class="form-group">
+            <label for="harbour">Port d'attache :</label>
+            <input id="harbour" name="harbour" type="text" class="form-control" value="<?= $_POST['harbour']?>">
+        </div>
+        <?php if($mail == false):?>
+        <div class="form-group has-error">
+            <label for="mail">Mail :</label>
+            <input id="mail" name="mail" type="mail" class="form-control">
+            <p class="help-block">Le format de votre adresse mail n'est pas valide...</p>
+        </div>
+        <?php else:?>
+            <div class="form-group">
+                <label for="mail">Mail :</label>
+                <input id="mail" name="mail" type="mail" class="form-control" value="<?= $_POST['mail']?>">
+            </div>
+        <?php endif;?>
+        <?php if($password == false):?>
+        <div class="form-group has-error">
+            <label for="password">Mot de passe :</label>
+            <input id="password" name="password" type="password" class="form-control">
+            <p class="help-block">Vous n'avez pas saisi un mot passe identique...</p>
+        </div>
+        <div class="form-group has-error">
+            <label for="passwordConfirm">Saisissez à nouveau votre mot de passe :</label>
+            <input id="passwordConfirm" name="passwordConfirm" type="password" class="form-control">
+            <p class="help-block">Vous n'avez pas saisi un mot passe identique...</p>
+        </div>
+        <?php else:?>
+        <div class="form-group">
+            <label for="password">Mot de passe :</label>
+            <input id="password" name="password" type="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="passwordConfirm">Saisissez à nouveau votre mot de passe :</label>
+            <input id="passwordConfirm" name="passwordConfirm" type="password" class="form-control">
+        </div>
+        <?php endif;?>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary input-lg">confirmer</button>
+        </div>
+    </form>
+    <article class="col-md-6 col-md-offset-3 text-center">
+        <img src=""/>
+    </article>
+</div>

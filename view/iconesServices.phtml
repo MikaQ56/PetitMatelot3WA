@@ -1,0 +1,56 @@
+<p> 
+    <?php if($service['Eau']):?>
+        <i class="fa fa-tint iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Eau"></i>
+    <?php endif;?>
+    <?php if($service['Sanitaires']):?>
+        <i class="fa fa-shower iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Sanitaires"></i>
+    <?php endif;?>
+    <?php if($service['Electricite']):?>
+        <i class="fa fa-plug iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Electricité"></i>
+    <?php endif;?>
+    <?php if($service['Carburant']):?>
+        <span class="glyphicon glyphicon-oil iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Carburant"></span>
+    <?php endif;?>
+    <?php if($service['Schipchandler']):?>
+        <i class="fa fa-wrench iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Schipchandler"></i>
+    <?php endif;?>
+    <?php if($service['Laverie']):?>
+        <i class="fa fa-eercast iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Laverie"></i>
+    <?php endif;?>
+    <?php if($service['Recyclage']):?>
+        <i class="fa fa-recycle iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Recyclage"></i>
+    <?php endif;?>
+    <?php if($service['Internet']):?>
+        <i class="fa fa-wifi iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Internet"></i>
+    <?php endif;?>
+    <?php if($service['Velo']):?>
+        <i class="fa fa-bicycle iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Mise à disposition de vélos"></i>
+    <?php endif;?>
+    <?php if($service['chariot']):?>
+        <i class="fa fa-shopping-cart iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Chariots sur les pontons"></i>
+    <?php endif;?>
+    <?php if($service['ice']):?>
+        <i class="fa fa-snowflake-o iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Glace"></i>
+    <?php endif;?>
+    <?php if($service['videoSurveillance']):?>
+        <i class="fa fa-video-camera iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Vidéo-surveillance"></i>
+    <?php endif;?>
+    <?php if($service['digicode']):?>
+        <i class="fa fa-lock iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="accès ponton sécurisé"></i>
+    <?php endif;?>
+    <?php if($service['journal']):?>
+        <i class="fa fa-newspaper-o iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Distribution journal"></i>
+    <?php endif;?>
+    <?php if($service['handicap']):?>
+        <i class="fa fa-wheelchair iconePort" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Accès handicapé"></i>
+    <?php endif;?>
+        <a href="<?= $harbour['siteWeb']?>" data-toggle="tooltip" data-placement="right" title="Site Web du port">
+            <i class="fa fa-internet-explorer iconePort" aria-hidden="true"></i>
+        </a>
+        <a href="<?= $harbour['localisation']?>" data-toggle="tooltip" data-placement="right" title="Localisation" target="_blank">
+            <i class="fa fa-map-marker iconePort" aria-hidden="true"></i>     
+        </a>
+        <a href="<?= $harbour['meteo']?>" data-toggle="tooltip" data-placement="right" title="Météo" target="_blank">
+            <i class="fa fa-sun-o iconePort" aria-hidden="true"></i>
+        </a>
+</p>

@@ -1,0 +1,296 @@
+
+<div class="container-fluid">           
+    <div class="row" id="selecteur">
+        <div class="panel-group col-sm-6 col-md-4 col-lg-3" id="accordion1" role="tablist" aria-multiselectable="true">
+            <p class="zone">Choisissez votre zone géographique : </p>
+            <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <p class="caretHeading">Pays</p> 
+                    <p class="caretPerso"><span class="caret"></span></p>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="list-group" id="countryy">
+                    <?php foreach($pays as $key => $value):?>
+                        <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $value?>#vignettes" class="list-group-item" data-pays="<?= $value?>" data-index="<?= $key?>">
+                            <p class="pays"><?= $value?></p>
+                            <?php if($value == $country):?>
+                            <p class="okPays" id="pays<?= $key?>">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </p>
+                            <?php endif;?>
+                        </a>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </div>
+        <?php if(!empty($region)):?>
+            <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <p class="caretHeading">Région</p> 
+                    <p class="caretPerso"><span class="caret"></span></p>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="list-group" id="area">
+                    <?php foreach($region as $key => $value):?>
+                        <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $value?>#vignettes" class="list-group-item" data-region="<?= $value?>" data-index="<?= $key?>">
+                            <p class="region"><?= $value?></p>
+                            <?php if($value == $area):?>
+                            <p class="okRegion" id="region<?= $key?>">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </p>
+                            <?php endif;?>
+                        </a>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </div>
+        <?php endif;?>
+        <?php if(!empty($departement)):?>
+            <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <p class="caretHeading">Département</p> 
+                    <p class="caretPerso"><span class="caret"></span></p>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="list-group" id="department">
+                    <?php foreach($departement as $key => $value):?>
+                        <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $value?>#vignettes" class="list-group-item" data-departement="<?= $value?>" data-index="<?= $key?>">
+                            <p class="departement" id="<?= $value?>"><?= $value?></p>
+                            <?php if($value == $department):?>
+                            <p class="okDepartement" id="departement<?= $key?>">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </p>
+                            <?php endif;?>
+                        </a>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </div>
+        <?php endif;?>
+            <p class="filtre">Classement par :</p>
+            <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <p class="caretHeading">Critère</p> 
+                        <p class="caretPerso"><span class="caret"></span></p>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div class="list-group" id="critere">
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=confort#vignettes" class="list-group-item" data-critere="confort">
+                        <p class="confort">Confort</p>
+                        <?php if($avis == "confort"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=situation#vignettes" class="list-group-item" data-critere="situation">
+                        <p class="situation" >Situation</p>
+                        <?php if($avis == "situation"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=securite#vignettes" class="list-group-item" data-critere="securite">
+                        <p class="securite">Sécurité</p>
+                        <?php if($avis == "securite"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=accessibilite#vignettes" class="list-group-item" data-critere="accessibilite">
+                        <p class="accessibilite">Accéssibilité</p>
+                        <?php if($avis == "accessibilite"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=services#vignettes" class="list-group-item" data-critere="services">
+                        <p class=services>Services</p>
+                        <?php if($avis == "services"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=accueil#vignettes" class="list-group-item" data-critere="accueil">
+                        <p class=services>Accueil</p>
+                        <?php if($avis == "accueil"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&avis=global#vignettes" class="list-group-item" data-critere="global">
+                        <p class=global>Global (moyenne critères précèdents)</p>
+                        <?php if($avis == "global"):?>
+                        <p class="okCritere">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                    <a href="index.php?page=classement-ports-de-plaisance&pays=<?= $country?>&region=<?= $area?>&departement=<?= $department?>&abc=Ordre alphabétique#vignettes" class="list-group-item" data-critere="ASC">
+                        <p class="abc">Ordre alphabétique</p>
+                        <?php if($abc == "Ordre alphabétique"):?>
+                        <p class="sort">
+                            <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span>
+                        </p>
+                        <?php endif;?>
+                    </a>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <h5>Votre sélection :</h5>
+                <div id="resultRanking" class="col-xs-10 col-xs-offset-1">
+                <?php if(!empty($country)):?>
+                    <h3 class="text-center"><?= $country?></h3>
+                <?php endif;?>
+                <?php if(!empty($area)):?>
+                    <p class="text-center"><span class="glyphicon glyphicon-plus-sign text-center" aria-hidden="true"></span></p>
+                    <h3 class="text-center"><?= $area?></h3>
+                <?php endif;?>
+                <?php if(!empty($department)):?>
+                    <p class="text-center"><span class="glyphicon glyphicon-plus-sign text-center" aria-hidden="true"></span></p>
+                    <h3 class="text-center"><?= $department?></h3>
+                <?php endif;?>
+                <?php if(!empty($avis)):?>
+                    <p class="text-center"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></p>
+                    <h3 class="text-center"><?= ucfirst($avis)?></h3>
+                <?php endif;?>
+                <?php if(!empty($abc)):?>
+                    <p class="text-center"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></p>
+                    <h3 class="text-center"><?= ucfirst($abc)?></h3>
+                <?php endif;?>
+                </div>
+            </div>
+        </div>
+        <div class="row vignettes" id="vignettes">
+        <?php foreach($ranking as $key => $value):?>
+            <a href="index.php?page=port&id=<?= $value['harbourId']?>" data-toggle="tooltip" data-placement="right" title="Cliquez pour accéder à la description du port">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail survol">
+                        <img src="images/ports/<?= $value['image1']?>" alt="Port<?= $value['harbour']?>">
+                        <div class="caption">
+                            <h3><?= $value['harbour']?></h3>
+                            
+                            <h4><?= $value['slogan']?></h4>
+                            <?php if($avis != ""):?>
+                            <h4 class="left"><?= $stars[round($value[$avis], 0, PHP_ROUND_HALF_UP)]?></h4>
+                            <?php else :?>
+                            <h4 class="left"><?= $stars[round($value[$global], 0, PHP_ROUND_HALF_UP)]?></h4>
+                            <?php endif;?>
+                            <?php $avisNbr = count_avis($db, $value['harbourId']);?>
+                            <?php $avisAccueilNbr = count_avis_accueil($db, $value['harbourId']);?>
+                            <?php $avisPrixNbr = count_avis_prix($db, $value['harbourId']);?>
+                            <?php if($avis == ""):?>
+                                <?php if($avisNbr['count_avis'] == 0):?>
+                                <p class="left">Note globale : </p>
+                                <p class="right"><span class="badge">NC</span></p>
+                                <?php else:?>
+                                <p class="left">Note globale : </p>
+                                <p class="right"><span class="badge"><?= $value[$global]?></span></p>
+                                <?php endif;?>
+                            <?php elseif($avis != "accueil"):?>
+                                <?php if($avisNbr['count_avis'] == 0):?>
+                                <p class="left">Note <?= $avis?> : </p>
+                                <p class="right"><span class="badge">NC</span></p>
+                                <?php else:?>
+                                <p class="left">Note <?= $avis?> :</p>
+                                <p class="right"><span class="badge"><?= $value[$avis]?></span></p>
+                                <?php endif;?>
+                            <?php else:?>
+                                <?php if($avisAccueilNbr['count_avis_accueil'] == 0):?>
+                                <p class="left">Note <?= $avis?> : </p>
+                                <p class="right"><span class="badge">NC</span></p>
+                                <?php else:?>
+                                <p class="left">Note <?= $avis?> :</p>
+                                <p class="right"><span class="badge"><?= $value[$avis]?></span></p>
+                                <?php endif;?>
+                            <?php endif;?>
+                            <p class="left">Nb avis : </p>
+                            <p class="right">
+                                <?php if($avis != "accueil"):?>
+                                <span class="badge"><?php echo $avisNbr['count_avis'];?></span>
+                                <?php else:?>
+                                <span class="badge"><?php echo $avisAccueilNbr['count_avis_accueil'];?></span>
+                                <?php endif;?>
+                            </p>
+                            <p class="left">Nb commentaires :</p>
+                            <p class="right">
+                                <span class="badge"><?php $reponse = count_posts($db, $value['harbourId']); echo $reponse['count_posts'];?></span>
+                            </p>
+                                
+                            <?php if($avisNbr['count_avis'] == 0):?>
+                            <?php if($avis != "" & $avis != "global"):?>
+                                <p class="left">Classement <?= $avis?></p>
+                                <p class="right">
+                                    <span class="rank">NC</span>
+                                </p>
+                            <?php endif;?>
+                                <p class="left">Classement général :</p>
+                                <p class="right">
+                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Classement général">
+                                        <span class="rank">NC</span>
+                                    </a>
+                                </p>
+                            <?php elseif(($avisAccueilNbr['count_avis_accueil'] == 0) AND ($avis == "accueil")):?>
+                                <?php if($avis != "" & $avis != "global"):?>
+                                    <p class="left">Classement <?= $avis?></p>
+                                    <p class="right">
+                                        <span class="rank">NC</span>
+                                    </p>
+                                <?php endif;?>                        
+                                    <p class="left">Classement général :</p>
+                                    <p class="right">
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Classement général">
+                                            <span class="rank">NC</span>
+                                        </a>
+                                    </p> 
+                                <?php else:?>
+                                    <?php if($avis != "" & $avis != "global"):?>
+                                    <p class="left">Classement <?= $avis?></p>
+                                    <p class="right">
+                                        <span class="rank"><?= $key + 1?></span>
+                                    </p>
+                                    <?php endif;?>
+                                    <p class="left">Classement général :</p>
+                                    <p class="right">
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Classement général">
+                                            <span class="rank"><?= load_rank($db, $global, $value['harbourId'])?></span>
+                                        </a>
+                                    </p>
+                                <?php endif;?>
+                            </div>
+                        </div>   
+                    </div>
+                </a>
+            <?php endforeach;?> 
+        </div>
+        <?php if(empty($ranking)):?>
+            <div class="alert alert-info">
+            Désolé, nous n'avons pas de ports qui correspondent à votre recherhe. Contactez nous pour nous suggérer des ports à référencer dans votre région. 
+            </div>
+        <?php endif;?>
+    </div>
+</div> 
+
+ 

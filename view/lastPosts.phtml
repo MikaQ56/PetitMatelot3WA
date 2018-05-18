@@ -1,0 +1,77 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Derniers messages postés...
+        </h3>
+    </div>
+    <div class="panel-body">
+        <?php foreach($posts as $key => $value):?>
+            <?php if(!empty($value['post']) OR !empty($value['upload'])):?>
+                <p class="col-xs-8 pseudo" id="ancre<?= $value['id']?><?= $screen?>"><strong><?= $value['pseudo']?></strong>, le <?= $value['date']?> :</p>
+            <?php endif;?>
+            <?php if(!empty($value['post'])):?>
+                <div class="post col-xs-8 col-xs-offset-4">
+                    <p><?= $value['post']?></p>
+                </div>
+                <p class="col-xs-12 text-right">
+                    <span class="glyphicon glyphicon-comment" data-id="<?= $value['id']?>" data-screen="<?= $screen?>"></span>
+                    <a href="index.php?page=likes&id=<?= $_GET['id']?>&pseudo=<?= $_SESSION['pseudo']?>&postId=<?= $value['id']?>&screen=<?= $screen?>">
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                    </a>
+                    <?php 
+                    $reponse = count_likes($db, $value['id']);
+                    $nbrLike = $reponse['count_likes'];  
+                    ?>
+                    <?php if($nbrLike != 0):?>
+                        <span class="likes"> <?= $nbrLike?></span>
+                    <?php endif;?>
+                </p>
+            <?php endif;?>
+            <?php if(!empty($value['upload'])):?>
+                <p id="upload" class="col-xs-12 col-sm-9 col-sm-offset-3 text-center thumbnail">
+                    <img src="<?= $value['upload']?>"/>
+                </p>
+                <p class="col-xs-12 text-right">
+                    <span class="glyphicon glyphicon-comment" data-id="<?= $value['id']?>" data-screen="<?= $screen?>"></span>
+                    <a href="index.php?page=likes&id=<?= $_GET['id']?>&pseudo=<?= $_SESSION['pseudo']?>&postId=<?= $value['id']?>&screen=<?= $screen?>">
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                    </a>
+                    <?php 
+                    $reponse = count_likes($db, $value['id']);
+                    $nbrLike = $reponse['count_likes'];  
+                    ?>
+                    <?php if($nbrLike != 0):?>
+                        <span class="likes"> <?= $nbrLike?></span>
+                    <?php endif;?>
+                </p>
+            <?php endif;?>
+            <form method="post" action="index.php?page=comment&id=<?= $_GET['id']?>">
+                <div class="col-lg-8 col-lg-offset-4">
+                    <textarea class="form-control hidden" rows="3" name="comment" id="comment<?= $value['id']?><?= $screen?>">Votre commentaire
+                    </textarea>
+                    <div class="validComment">
+                        <input type="hidden" name="pseudo" value="<?= $_SESSION['pseudo']?>">
+                        <input type="hidden" name="postId" value="<?= $value['id']?>">
+                        <input type="hidden" name="screen" value="<?= $screen?>">
+                        <input type="hidden" name="ancre" value="index.php?page=port&id=<?= $_GET['id']?>#ancre<?= $value['id']?>">
+                        <button type="submit" class="btn btn-primary btn-sm hidden" id="submitComment<?= $value['id']?><?= $screen?>">Valider</button>
+                    </div>
+                </div>    
+            </form>
+            <?php $comments =loadCommentsByPost($db, $value['id']);?>
+                <?php foreach($comments as $key => $comment):?>
+                    <?php if(!empty($comment['comment'])):?>
+                        <p class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 pseudo"><strong><?= ucfirst($comment['pseudo'])?></strong>, le <?= $comment['date']?> :</p>
+                        <div class="post col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4">
+                            <p><?= $comment['comment']?></p>
+                        </div>
+                    <?php endif;?>
+                <?php endforeach;?>
+        <?php endforeach;?>
+        <nav aria-label="Page navigation" class="text-right">
+            <ul class="pagination pagination-sm">
+                <?php require 'pagination.phtml';?>
+            </ul>
+        </nav>
+    </div>
+</div>

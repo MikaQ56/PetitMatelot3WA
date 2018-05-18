@@ -1,0 +1,136 @@
+<?php if (isset($_SESSION['pseudo'])):?>
+<section class="container-fluid">
+    <div class="row">
+        <div class="coverSession hidden-xs"></div>
+    </div>
+    <div class="jumbotron" class="description">
+        <div class="fb-like" data-href="http://lepetitmatelot.com" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+        </div>
+        <h1>Bienvenue à bord <?= ucfirst($_SESSION['pseudo'])?>! 
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target=".news">Actualités</button>
+        </h1>
+        <p class="text-justify">Plus de 143 ports sont référencés à ce jour. N'hésitez pas à faire votre propre recherche et donner vos avis et commentaires sur vos ports préférés. Vous pouvez faire une recherche en vous aidant de la barre de recherche. Vous pouvez également faire votre sélection via le classement des ports ou la carte de france qui vous permettra en un clin d'oeil d'accéder à tous les ports référencés à ce jour. 
+        </p>
+        <p>Bonne navigation matelot !</p>
+        <p class="text-right hidden-xs">
+            <a type="button" class="btn btn-primary " href="index.php?page=map">La carte</a>
+            <a type="button" class="btn btn-primary" href="index.php?page=classement-ports-de-plaisance">Le classement</a>
+        </p>
+    </div>
+</section>
+<?php else:?>
+<section class="container-fluid">
+    <div class="row">
+        <div class="cover col-sm-12 hidden-xs">
+            <div class="col-sm-10 col-sm-offset-1 hidden-xs row" id="searchBar" >
+                <form method="post" action="index.php?page=search" role="search" id="search">
+                    <div class="form-group col-lg-12">
+                        <div class="input-group col-lg-12 input-lg">
+                            <input type="text" name="harbour" class="form-control input-lg" placeholder="Faites votre choix parmi les 143 ports référencés par le Petit Matelot">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg" type="submit">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>   
+                    </div>
+                </form>
+            </div>
+            <div class="row" id="shortcuts">
+                <div class="col-sm-3 text-center">
+                   <a class="btn btn-primary btn-lg shortcut" href="index.php?page=classement-ports-de-plaisance" role="button">Classement</a> 
+                </div>
+                <div class="col-sm-3 text-center">
+                   <a class="btn btn-primary btn-lg shortcut" href="index.php?page=map" role="button">Carte</a> 
+                </div>
+                <div class="col-sm-3 text-center">
+                    <a class="btn btn-primary btn-lg shortcut" href="#" data-toggle="modal" data-target=".news">Actualités</a> 
+                </div>
+                <div class="col-sm-3 text-center">
+                   <a class="btn btn-primary btn-lg shortcut" href="index.php?page=registration" >Nous rejoindre</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container-fluid">
+    <div class="jumbotron" class="description">
+        <div class="fb-like" data-href="http://lepetitmatelot.com" data-layout="button" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+        <div class="fb-share-button" data-href="http://lepetitmatelot.com" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Partager</a></div>
+        <h1>Guide des ports des plaisanciers</h1>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target=".news">Actualités
+            </button> 
+        <h2>Ohé matelots,
+        </h2>
+        <p class="text-justify">Bienvenue à bord, plus qu'un guide des ports de plaisance, Le Petit Matelot recense les <strong>avis, commentaires, photos, des marins faisant escale</strong>. Parce qu'il est plus agréable après une bonne journée de "nav" d'arriver dans un port qui répond aux attentes de chacune et chacun... C'est la raison d'être du Petit Matelot. Vous aider à trouver le port qui vous correspond, selon votre situation géographique, selon les atouts, avantages et contraintes de chaque port, selon vos goûts. Un forum vous est dédié pour que vous puissiez partager avec tous les "petits matelots" vos impressions sur votre escale, vos suggestions, conseils et bonnes adresses. 
+        Bonne navigation à toutes et tous !
+        </p>
+        <p class="text-right">
+            <a class="btn btn-primary btn-lg" href="index.php?page=registration" role="button">Nous rejoindre...</a>  
+        </p>
+        <p class="text-right visible-xs">
+            <a href="#" data-toggle="modal" data-target=".connexion"> 
+                ... Ou se connecter
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+            </a>
+        </p>
+    </div>
+</section> 
+<?php endif;?>
+
+<section class="container-fluid">
+    <div class="row navigation" >
+        <div class="col-md-9 col-xs-12" >
+        <form method="post" action="index.php?page=search" role="search" id="search">
+            <div class="form-group col-xs-12">
+                <div class="input-group col-xs-12">
+                    <input type="text" name="harbour" class="form-control input-lg" placeholder="Choisissez un port...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-lg" type="submit">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>   
+            </div>
+        </form>
+        </div>
+        <div class="col-md-3 recherche hidden-xs" data-spy="affix">
+            <ul class="nav nav-pills nav-justified">
+                <li role="presentation"><a href="index.php?page=classement-ports-de-plaisance" >Classement</a></li>
+                <li role="presentation"><a href="index.php?page=map">Carte</a></li>
+            </ul>
+        </div>
+        <div class="visible-xs">
+            <div class="row buttonSmartphone">
+                <a class="btn btn-success btn-lg col-xs-8 col-xs-offset-2" href="index.php?page=map" role="button">La carte des ports</a>
+            </div>
+            <div class="row buttonSmartphone">
+                <a class="btn btn-success btn-lg col-xs-8 col-xs-offset-2" href="index.php?page=classement-ports-de-plaisance" role="button">Le classement</a>
+            </div>   
+        </div>
+    </div>
+    <div class="page-header text-center">
+        <h1>Les ports par région <small></small></h1>
+    </div>
+    <div class="row vignettes" id="vignettes">
+        <?php foreach($region as $key => $value):?>
+            <a href="index.php?page=classement-ports-de-plaisance&pays=france&region=<?= $value?>#vignettes" data-region="<?= $value?>" data-toggle="tooltip" data-placement="right" title="Cliquez pour accéder aux de cette région">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail survol">
+                        <img src="images/region/<?= $value?>.png" alt="Ports de <?= $value?>">
+                        <div class="caption">
+                            <h3><?= $value?></h3>
+                        </div>
+                    </div>   
+                </div>
+            </a>
+        <?php endforeach;?>
+    </div>
+</section>
+   
+  
+
+
+
+
+ 

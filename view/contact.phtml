@@ -1,0 +1,51 @@
+<?php if(isset($_GET['success']) AND $_GET['success'] == "valid"):?>
+    <div class="alert alert-success confirmation" role="alert">
+    Votre message a bien été envoyé. Nous ne manquerons pas de vous répondre. Bon vent !
+    </div>
+<?php endif;?> 
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>Contact</h1>
+        </div>
+        <div class="text-center">
+            <div class="fb-page" data-href="https://www.facebook.com/lepetitmatelotdesports/" data-width="500" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/petitmatelot56/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/petitmatelot56/">Le Petit Matelot</a></blockquote></div>
+        </div>
+        <div class="alert alert-info col-md-6 col-md-offset-3" role="alert">
+        Vous souhaitez nous recommander un port ? Participer au référencement de nouveaux ports sur le petit matelot ? Ou tout simplement, partager votre avis sur le site, nous faire des suggestions... Laissez nous un message en remplissant le formulaire ci-dessous ou en allant sur notre page facebook (cliquez ci-dessus). Nous serons ravi de vous répondre. 
+        </div>
+        <div class="row">
+            <form action="index.php?page=contact" method="post" class="col-md-6 col-md-offset-3" id="formContact">
+                <div class="form-group">
+                    <label for="firstname">Votre prénom :</label>
+                    <input id="firstname" type="text" class="form-control" name="firstname">
+                </div>
+            <?php if($mail == false):?>
+                <div class="form-group has-error">
+                    <label for="mail">Votre mail :</label>
+                    <input id="mail" name="mail" type="mail" class="form-control">
+                    <p class="help-block">Le format de votre adresse mail n'est pas valide...</p>
+                </div>
+            <?php else:?>
+                <div class="form-group">
+                    <label for="mail">Votre mail :</label>
+                    <input id="mail" name="mail" type="mail" class="form-control">
+                </div>
+            <?php endif;?>
+            <?php if(isset($_GET['error']) AND $_GET['error'] == errorMessage):?>
+                <div class="form-group has-error">
+                    <label for="message">Votre message :</label>
+                    <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+                    <p class="help-block">Vous n'avez pas laissé de message...</p>
+                </div>
+            <?php else:?>
+                <div class="form-group">
+                    <label for="message">Votre message :</label>
+                    <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+                </div>
+            <?php endif;?>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary input-sm">Envoyer</button>
+                </div>  
+            </form>
+        </div>
+    </div> 

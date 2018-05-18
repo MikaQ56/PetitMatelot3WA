@@ -1,0 +1,16 @@
+<div class="container">
+<?php if(isset($_GET['avis']) AND $_GET['avis'] == "valid"):?>
+    <div class="alert alert-success confirmation col-xs-12" role="alert">
+        Votre avis a bien été pris en compte. Merci pour votre contribution.
+    </div>
+<?php elseif(isset($_GET['avis']) AND $_GET['avis'] == "valid1"):?>
+    <div class="alert alert-success confirmation col-xs-12" role="alert">
+        Nous avons mis à jour votre avis. Merci pour votre contribution.
+    </div>
+<?php endif;?>
+<?php if(!empty($_GET['alert'])):?>
+    <div class="alert alert-warning confirmation col-xs-12" role="alert">
+        <?php echo $_GET['alert'];?>
+    </div>
+<?php endif;?>
+</div>

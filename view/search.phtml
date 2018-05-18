@@ -1,0 +1,65 @@
+<div class="row centrer">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">Résultat(s) de votre recherche :</h1>
+            </div>
+            <?php if(!empty($reponse)):?>
+            <div class="panel-body">
+                <ul class="list-group">
+                <?php foreach($reponse as $key => $value):?>
+                    <li class="list-group-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="index.php?page=port&id=<?= $value['id']?>">
+                                    <img class="media-object" src="images/ports/<?= $value['image1']?>" alt="photo port">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <a href="index.php?page=port&id=<?= $value['id']?>">
+                                    <h4 class="media-heading">Port <?= $value['harbour']?></h4>
+                                    <p><?= substr($value['introduction'],0,500)?>[...]</p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach;?>
+                </ul>  
+            </div>
+            <?php elseif(!empty($reponse1)):?>
+            <div class="panel-body">
+                <ul class="list-group">
+                <?php foreach($reponse1 as $key => $value):?>
+                    <li class="list-group-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="index.php?page=port&id=<?= $value['id']?>">
+                                    <img class="media-object" src="images/ports/<?= $value['image1']?>" alt="photo port">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Port <?= $value['harbour']?></h4>
+                                <p><?= substr($value['introduction'],0,500)?>[...]</p>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach;?>
+                </ul>
+            </div>
+            <?php else:?>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                    <div class="well">Désolé, nous n'avons pas trouvé de résultats à votre recherche...</div>
+                    </li>
+                </ul>
+            </div>
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+
+
+
+
+
